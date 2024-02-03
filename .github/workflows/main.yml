@@ -9,19 +9,20 @@ jobs:  # The collection of jobs that are run in the workflow.
   build:  # The name of the job.
     runs-on: ubuntu-latest  # The type of machine to run the job on. Here it's the latest version of Ubuntu.
 
-    steps:  # The sequence of tasks that make up a job.
-    - uses: actions/checkout@v2  # Uses a prebuilt GitHub Action to check out your repository.
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Checks out your repository so the workflow can access it.
 
-    - name: Install Qt  # The name of the step.
-      uses: jurplel/install-qt-action@v2  # Uses a prebuilt GitHub Action to install Qt.
-      with:  # The parameters to pass to the action.
-        version: '6.2.1'  # The version of Qt to install.
+      - name: Install C++ compiler
+        run: |
+          sudo apt update
+          sudo apt install -y g++ clang # Installs the GNU C++ compiler and Clang.
 
-    - name: Configure  # The name of the step.
-      run: qmake  # Runs qmake to generate a Makefile.
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3  # Installs Qt.
+        with:
+          version: '6.2.1'  # The version of Qt to install.
+          modules: 'qtmultimedia'
 
-    - name: Build  # The name of the step.
-      run: make  # Runs make to build the project.
-
-    - name: Test  # The name of the step.
-      run: make check  # Runs the tests of the project. Replace with your test command if different.
+      - name: Configure
+        run: qmake ../pacman-qt/Pacman/Pacman.pro # Generates a Makefile. This should probably be done before the first 'make' command.
