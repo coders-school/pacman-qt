@@ -1,6 +1,3 @@
 #include "scoremanager.h"
 
-ScoreManager::ScoreManager()
-{
-
-}
+ScoreManager::ScoreManager() {}

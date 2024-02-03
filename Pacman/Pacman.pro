@@ -38,4 +38,3 @@ FORMS += \
 
 # Default rules for deployment.
 !isEmpty(target.path): INSTALLS += target
-

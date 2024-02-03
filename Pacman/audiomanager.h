@@ -4,7 +4,7 @@
 #include <QMediaPlayer>
 
 class AudioManager : public QObject {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
   AudioManager();
@@ -19,15 +19,16 @@ public:
   void unmute(); // Unmute all audio
 
 private:
-    void initAudio(); // Initialize the audio system
-    void loadSoundEffects(); // Load sound effects from files
-    void loadMusicTracks(); // Load music tracks from files
-    // TODO: Private member variables for audio settings, sound effects, music tracks, etc.
-    int volume;
-    QMediaPlayer *soundEffectPlayer;
-    QMediaPlayer *musicPlayer;
-    QStringList musicTrackList;
-    int currentTrackIndex;
+  void initAudio();        // Initialize the audio system
+  void loadSoundEffects(); // Load sound effects from files
+  void loadMusicTracks();  // Load music tracks from files
+  // TODO: Private member variables for audio settings, sound effects, music
+  // tracks, etc.
+  int volume;
+  QMediaPlayer *soundEffectPlayer;
+  QMediaPlayer *musicPlayer;
+  QStringList musicTrackList;
+  int currentTrackIndex;
 };
 
 #endif // AUDIOMANAGER_H

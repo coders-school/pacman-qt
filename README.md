@@ -17,7 +17,7 @@ To set up and run the game, follow these steps:
 - **Map Generation (Class `Maze`)**: Managed by Person 4.
 - **User Interface (Class `UIManager`)**: Managed by Person 5.
 - **Audio Management (Class `AudioManager`)**: Managed by Person 6.
-- **Score Management (Class `ScoreManager`)**: Managed by Person 7. 
+- **Score Management (Class `ScoreManager`)**: Managed by Person 7.
 - **Configuration Management (Class `ConfigManager`)**: Managed by Person 8.
 
 
