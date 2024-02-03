@@ -74,6 +74,33 @@ To set up and run the game, follow these steps:
 - Regularly test your code and ensure it integrates smoothly with other components.
 - Document your code thoroughly.
 
+## Pre-commit
+
+Pre-commit is a tool that helps maintain code quality by checking your code before each commit. To set up pre-commit in your project, follow these steps:
+
+1. Install pre-commit. You can do this using pip:
+
+```bash
+pip install pre-commit
+```
+2. Add a .pre-commit-config.yaml file to the root directory of your project. You can configure various hooks in this file.
+
+3. Install the pre-commit hooks:
+```bash
+pre-commit install
+```
+
+4. If you want to manually run all pre-commit hooks on all files, you can use the following command:
+```bash
+pre-commit run --all-files
+```
+
+## Continuous Integration
+This project uses Continuous Integration (CI) to automatically build and test the code in this repository. Whenever a commit is made, the CI process triggers and runs the build and test processes.
+
+To see the results of the CI process, check the Actions tab in this github repository.
+
+
 ## License and Credits
 - This project is licensed under [MIT License](https://opensource.org/licenses/MIT).
 - Developed by the Pac-Man Qt Project Team.
