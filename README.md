@@ -100,6 +100,39 @@ This project uses Continuous Integration (CI) to automatically build and test th
 
 To see the results of the CI process, check the Actions tab in this github repository.
 
+## Docker
+
+This application can be run using Docker. The Dockerfile in the root directory defines the Docker image.
+
+### Dockerfile
+
+The Dockerfile specifies how to build the Docker image for this application. Here's a brief overview of what it does:
+
+1. `FROM`: This line specifies the base image that we're building from. This is usually an image that includes an operating system and some basic software.
+
+2. `WORKDIR`: This line sets the working directory inside the Docker container. All subsequent commands (like `RUN`, `CMD`, `ENTRYPOINT`, `COPY`, and `ADD`) will be run from this directory.
+
+3. `COPY`: This line copies files from the host machine to the Docker image.
+
+4. `RUN`: This line runs a command in the Docker image. This is usually used to install software.
+
+5. `CMD`: This line provides defaults for an executing container. This can include an executable, or they can omit the executable, in which case you must specify an `ENTRYPOINT` instruction.
+
+### Building the Docker Image
+
+To build the Docker image, navigate to the directory containing the Dockerfile and run the following command:
+
+```bash
+docker build -t my-application .
+```
+
+### Running the Docker Container
+
+To run the application in a Docker container, use the following command:
+
+```bash
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name my_app --rm my-application
+```
 
 ## License and Credits
 - This project is licensed under [MIT License](https://opensource.org/licenses/MIT).

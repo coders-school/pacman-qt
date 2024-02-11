@@ -36,5 +36,7 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
+TARGET = PacmanApp
+
 # Default rules for deployment.
 !isEmpty(target.path): INSTALLS += target
