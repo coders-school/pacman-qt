@@ -14,6 +14,7 @@ SOURCES += \
     audiomanager.cpp \
     configmanager.cpp \
     game.cpp \
+    gamescreen.cpp \
     ghosts.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     audiomanager.h \
     configmanager.h \
     game.h \
+    gamescreen.h \
     ghosts.h \
     mainwindow.h \
     maze.h \
@@ -34,6 +36,7 @@ HEADERS += \
     uimanager.h
 
 FORMS += \
+    gamescreen.ui \
     mainwindow.ui
 
 TARGET = PacmanApp

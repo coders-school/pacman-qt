@@ -17,6 +17,14 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
+signals:
+  void startGameSelected(); // Declare the signal
+
+private slots:
+  void on_StartGameButton_clicked();
+
+  void on_ExitButton_clicked();
+
 private:
   std::unique_ptr<Ui::MainWindow> ui; // Changed to unique_ptr
 };
