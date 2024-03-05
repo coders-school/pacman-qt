@@ -1,0 +1,28 @@
+name: Qt CI  # The name of your GitHub Actions workflow.
+
+on:  # Specifies the events that trigger the workflow.
+  push:  # The workflow will run when you push to any branch.
+  pull_request:  # The workflow will also run when a pull request is made to any branch.
+  workflow_dispatch:  # Allows the workflow to be manually triggered from GitHub's web interface.
+
+jobs:  # The collection of jobs that are run in the workflow.
+  build:  # The name of the job.
+    runs-on: ubuntu-latest  # The type of machine to run the job on. Here it's the latest version of Ubuntu.
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Checks out your repository so the workflow can access it.
+
+      - name: Install C++ compiler
+        run: |
+          sudo apt update
+          sudo apt install -y g++ clang # Installs the GNU C++ compiler and Clang.
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3  # Installs Qt.
+        with:
+          version: '6.2.1'  # The version of Qt to install.
+          modules: 'qtmultimedia'
+
+      - name: Configure
+        run: qmake ../pacman-qt/Pacman/Pacman.pro # Generates a Makefile. This should probably be done before the first 'make' command.
