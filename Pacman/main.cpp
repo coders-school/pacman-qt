@@ -19,6 +19,10 @@ int main(int argc, char *argv[]) {
     gamescreen.hide(); // Hide the game screen window
   });
 
+  //  QObject::connect(&gamescreen, &gameScreen::gameOver, [&]() {
+  //    w.show(); // Show the menu window when the startGameSelected signal is
+  //              // emitted
+  //    gamescreen.hide(); // Hide the game screen window
   w.show();
   return a.exec();
 }

@@ -33,6 +33,7 @@ private:
   void initLayout(); // Initialize the maze layout
   void initItems();  // Initialize the items in the maze
   // TODO: Private member variables for maze layout, items, etc.
+  char gameMap[20][28];
 };
 
 #endif // MAZE_H

@@ -46,20 +46,10 @@ RUN pip3 install "coverxygen==1.7.0"
 RUN qtchooser -install 6 /usr/bin/qmake6 && qtchooser -install -f default /usr/bin/qmake6
 RUN qbs setup-toolchains --detect && qbs setup-qt /usr/bin/qmake6 qt-6-2-4-bin && qbs config defaultProfile qt-6-2-4-bin
 
-# Install Xvfb
-# Start Xvfb on display :1
-RUN Xvfb :1 -screen 0 1024x768x16 &
-
-# Set the environment variables
-ENV QT_DEBUG_PLUGINS=1
-ENV QT_QPA_PLATFORM=xcb
-ENV QT_QPA_PLATFORM_PLUGIN_PATH=/opt/Qt/6.2.4/gcc_64/plugins
-ENV QT_PLUGIN_PATH=/opt/Qt/6.2.4/gcc_64/plugins
-ENV DISPLAY=:1
 
 # Set the working directory in the container to /app
 WORKDIR /app
-copy Pacman /app/Pacman
+COPY Pacman /app/Pacman
 
 # Add the current directory contents into the container at /app
 ADD . /app
@@ -70,5 +60,5 @@ RUN qmake /app/Pacman/Pacman.pro
 RUN make
 
 # Run the application
-#CMD ["./Pacman/Pacman"]
+#CMD ["./PacmanApp"]
 #ENTRYPOINT [ "/app/Pacman/Pacman" ]

@@ -123,15 +123,31 @@ The Dockerfile specifies how to build the Docker image for this application. Her
 To build the Docker image, navigate to the directory containing the Dockerfile and run the following command:
 
 ```bash
-docker build -t my-application .
+docker build -t pacman-qt .
 ```
+### Prerequisites for macOS M1
+
+If you are building and running this application on macOS M1, you need to install XQuartz, which is a version of the X.Org X Window System that runs on macOS.
+
+You can download XQuartz from [here](https://www.xquartz.org/).
+
+After installing XQuartz, you need to enable network connections:
+
+1. Open XQuartz.
+2. Navigate to the XQuartz preferences.
+3. In the security tab, enable the 'Allow connections from network clients' option.
+4. Restart XQuartz.
+
+Now you can proceed with building the Docker image and running the Docker container as described in the following sections.
 
 ### Running the Docker Container
 
-To run the application in a Docker container, use the following command:
+To run the application in a Docker container, first set the `HOSTNAME` environment variable and allow access from your local machine to the X server. Then, use the `docker run` command to start the container:
 
 ```bash
-docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name my_app --rm my-application
+export HOSTNAME=`hostname`
+xhost +${HOSTNAME}
+docker run -it --entrypoint /app/PacmanApp -e DISPLAY=${HOSTNAME}:0 -v /tmp/.X11-unix:/tmp/.X11-unix:rw pacman-qt
 ```
 
 ## License and Credits
